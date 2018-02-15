@@ -1,21 +1,20 @@
-### EarthSense: Web app
+# EarthSense: Web app
 
 An application which will provide a user interface to display data from the EarthSense network and manage it
 
-
-### Running the node server
+# Running the node server
 npm install
 sudo npm install -g @angular/cli
 ng serve
 navigate to "http://localhost:4200/"
 
-## Building the project
+# Building the project
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 
-## Functional specifications
+# Functional specifications
 
-### Functionalities
+## Functionalities
 * Internet access
 * Access to the EarthSense's network
 * Interactive map
@@ -23,10 +22,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 * Management panel for nodes and users
 * Login and authentication system
 
-### Requirements
+## Requirements
 * Cross-platform
 
-### Technologies retained
+# Technologies retained
 * HTML
   - Define content
 * CSS
@@ -36,7 +35,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 * AngularJS
   - Define routing
 
-### Structure of the application
+# Structure of the application
 * app
   * auth
   * home
@@ -67,10 +66,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 * module.ts
   - Define what is imported to current view such as libraries and other components
 
-# auth - Registering and logging in
-# profile - Information about the user logged in
-# settings - Web application settings
-# shared - HTML, CSS, or TS components that are reused on multiple views, imported into module.ts
+### auth - Registering and logging in
+### profile - Information about the user logged in
+### settings - Web application settings
+### shared - HTML, CSS, or TS components that are reused on multiple views, imported into module.ts
 
 ## assets
   - .gitkeep and .npmignore files
