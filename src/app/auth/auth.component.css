@@ -1,0 +1,35 @@
+h1, p {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+
+.auth-page {
+  height: 87vh;
+}
+
+form {
+  padding-left: 20vw;
+  padding-right: 20vw;
+  padding-bottom: 5vh;
+  padding-top: 5vh;
+}
+
+fieldset {
+  border: none;
+  padding-bottom: 5vh;
+}
+
+input {
+  width: 100%;
+  padding: 2vh;
+  font-size: 1.3em;
+}
+
+button {
+  width: 100%;
+  padding: 2vh;
+}
+
+.auth-page {
+  background-color: lightgrey;
+}

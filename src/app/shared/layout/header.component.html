@@ -8,51 +8,77 @@
 .w3-hover-opacity {cursor: pointer;}
 </style>
 
-<!-- Show this for logged out users
-   <ul *showAuthed="false"
-     class="nav navbar-nav pull-xs-right">
-
-     <li class="nav-item">
-       <a class="nav-link"
-         routerLink="/">
-         Home
-       </a>
-     </li>
-
-     <li class="nav-item">
-       <a class="nav-link"
-         routerLink="/login"
-         routerLinkActive="active">
-         Sign in
-       </a>
-     </li>
-
-     <li class="nav-item">
-       <a class="nav-link"
-         routerLink="/register"
-         routerLinkActive="active">
-         Sign up
-       </a>
-     </li>
-
-   </ul>
--->
 <nav class="navbar navbar-light">
 <div class="w3-top">
-  <ul class="w3-navbar" id="myNavbar">
-    <li><a href="#" class="w3-padding-large">EarthSense</a></li>
+
+  <!-- Show this for logged out users -->
+   <ul *showAuthed="false"
+    class="nav navbar-nav pull-xs-right w3-navbar" id="myNavbar">
+
+    <li><a class="w3-padding-large" routerLink="/">EarthSense</a></li>
 
     <li class="nav-item w3-hide-small w3-right">
       <a class="nav-link w3-padding-large" routerLink="/login" routerLinkActive="active">Login</a>
     </li>
 
-    <li class="w3-hide-small w3-right">
-      <a class="w3-padding-large">Data</a>
+    <li class="nav-item w3-hide-small w3-right">
+      <a class="nav-link w3-padding-large" routerLink="/register" routerLinkActive="active">Sign up</a>
     </li>
 
     <li class="nav-item w3-hide-small w3-right">
-      <a class="nav-link w3-padding-large" routerLink="/">Home</a>
+      <a class="nav-link w3-padding-large" routerLink="/map" routerLinkActive="active">Map</a>
     </li>
-  </ul>
+
+    <li class="nav-item w3-hide-small w3-right">
+      <a class="nav-link w3-padding-large" routerLink="/data" routerLinkActive="active">Data</a>
+    </li>
+
+    <li class="nav-item w3-hide-small w3-right">
+       <a class="nav-link w3-padding-large" routerLink="/">Home</a>
+    </li>
+   </ul>
+
+<!--  Show this for logged in users -->
+
+   <ul *showAuthed="true"
+     class="nav navbar-nav pull-xs-right w3-navbar" id="myNavbar">
+
+     <li><a class="w3-padding-large" routerLink="/">EarthSense</a></li>
+
+     <li class="nav-item w3-hide-small w3-right">
+       <a class="nav-link w3-padding-large" routerLink="/logout" routerLinkActive="active"> Logout </a>
+     </li>
+
+     <li class="nav-item w3-hide-small w3-right">
+       <a class="nav-link w3-padding-large"
+         [routerLink]="['/profile', currentUser.username]"
+         routerLinkActive="active">
+         <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
+         {{ currentUser.username }}
+       </a>
+     </li>
+
+     <li class="nav-item w3-hide-small w3-right">
+       <a class="nav-link w3-padding-large" routerLink="/manage" routerLinkActive="active"> Manage Nodes </a>
+     </li>
+
+     <li class="nav-item w3-hide-small w3-right">
+       <a class="nav-link w3-padding-large" routerLink="/map" routerLinkActive="active"> Map </a>
+     </li>
+
+     <li class="nav-item w3-hide-small w3-right">
+       <a class="nav-link w3-padding-large" routerLink="/data" routerLinkActive="active"> Data </a>
+     </li>
+
+     <li class="nav-item w3-hide-small w3-right">
+       <a class="nav-link w3-padding-large"
+         routerLink="/"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }">
+         Home
+       </a>
+     </li>
+   </ul>
+
 </div>
 </nav>

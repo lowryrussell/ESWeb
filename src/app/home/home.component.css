@@ -16,24 +16,24 @@ body, html {
 
 /* First background image, full screen trees, "what" */
 .bgimg-1 {
-    background-image: url('../img/what-bg.jpg');
+    background-image: url('/assets/img/what-bg.jpg');
     min-height: 100vh;
 }
 
 /* Second background image, partial screen pollution, "why" */
 .bgimg-2 {
-    background-image: url('../img/why-bg.jpg');
+    background-image: url('/assets/img/why-bg.jpg');
     min-height: 70vh;
 }
 
 /* Third background image, partial screen group photo, "who" */
 .bgimg-3 {
-    background-image: url('../img/user-icon.png');
+    background-image: url('/assets/img/Taylor.jpg');
     min-height: 70vh;
 }
 
-.what-container{
-  src: url("../img/what-modal.jpg");
+.modal-img {
+  max-height: 20vh;
 }
 
 .w3-wide {letter-spacing: 10px;}

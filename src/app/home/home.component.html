@@ -10,8 +10,8 @@
   <div class="w3-content w3-container w3-padding-64">
     <h2 class="w3-center">What is EarthSense?</h2>
 
-    <div class="w3-col m6 w3-center w3-section">
-      <img class="what-container" id="profile" alt="Raspberry Pi Zero">
+    <div class="w3-col m4">
+      <img class="modal-img" src="assets/img/what-modal.jpg" id="profile" alt="Raspberry Pi Zero">
     </div>
 
     <p class="details"> Human health depends on a variety of factors and the air we breathe is not an exception.
@@ -34,6 +34,11 @@
 <!-- Container (Why is this important?) -->
 <div class="w3-content w3-container w3-padding-64">
   <h2 class="w3-center">Why is this important?</h2>
+
+  <div class="w3-col m3">
+    <img class="modal-img" src="assets/img/why-modal.jpg" alt="pollution">
+  </div>
+
   <p class="details"> There exists a lack of environmental data that prevents the general and local public
       from making educated decisions about their habits and impacts on the environment. Decisions such
       as taking a car to campus instead of carpooling or riding the bus, tailgating with the thousands
@@ -56,20 +61,24 @@
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <img src="../img/russell-modal.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity">
+    <div class="w3-col m3 imgWrap">
+      <img src="assets/img/russell.jpg" style="width:100%" (click)="expand('assets/img/russell.jpg')" class="w3-hover-opacity">
+      <!-- <p class="name">Russell</p> -->
     </div>
 
-    <div class="w3-col m3">
-      <img src="../img/kaylee-modal.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity">
+    <div class="w3-col m3 imgWrap">
+      <img src="assets/img/kaylee.jpg" style="width:100%" (click)="expand('assets/img/kaylee.jpg')" class="w3-hover-opacity">
+      <!-- <p class="name">Kaylee</p> -->
     </div>
 
-    <div class="w3-col m3">
-      <img src="../img/brok-modal.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity">
+    <div class="w3-col m3 imgWrap">
+      <img src="assets/img/brok.jpg" style="width:100%" (click)="expand('assets/img/brok.jpg')" class="w3-hover-opacity">
+      <!-- <p class="name">Brok</p> -->
     </div>
 
-    <div class="w3-col m3">
-      <img src="../img/keaten-modal.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity">
+    <div class="w3-col m3 imgWrap">
+      <img src="assets/img/keaten.jpg" style="width:100%" (click)="expand('assets/img/keaten.jpg')" class="w3-hover-opacity">
+      <!-- <p class="name">Keaten</p> -->
     </div>
   </div>
 </div>
@@ -78,9 +87,10 @@
 <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
   <span class="w3-closebtn w3-hover-red w3-text-white w3-xxxlarge w3-container w3-display-topright">×</span>
   <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" style="max-width:100%">
+    <img src="" id="img01" style="height: 70vh">
   </div>
 </div>
+
 <!--  <script src='https://maps.googleapis.com/maps/api/js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js'></script> -->
 </body>
