@@ -1,3 +1,4 @@
+<div class="home-page">
 <body>
   <!-- First Parallax Image with Logo Text -->
   <div class="bgimg-1 w3-opacity w3-display-container">
@@ -61,24 +62,30 @@
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
-    <div class="w3-col m3 imgWrap">
-      <img src="assets/img/russell.jpg" style="width:100%" (click)="expand('assets/img/russell.jpg')" class="w3-hover-opacity">
-      <!-- <p class="name">Russell</p> -->
+    <div class="w3-col m4">
+      <img src="assets/img/russell.png" style="width:100%" (click)="expand('russell')" class="w3-hover-opacity">
     </div>
 
-    <div class="w3-col m3 imgWrap">
-      <img src="assets/img/kaylee.jpg" style="width:100%" (click)="expand('assets/img/kaylee.jpg')" class="w3-hover-opacity">
-      <!-- <p class="name">Kaylee</p> -->
+    <div class="w3-col m4">
+      <img src="assets/img/kaylee.jpg" style="width:100%" (click)="expand('kaylee')" class="w3-hover-opacity">
     </div>
 
-    <div class="w3-col m3 imgWrap">
-      <img src="assets/img/brok.jpg" style="width:100%" (click)="expand('assets/img/brok.jpg')" class="w3-hover-opacity">
-      <!-- <p class="name">Brok</p> -->
+    <div class="w3-col m4">
+      <img src="assets/img/brok.jpg" style="width:100%" (click)="expand('brok')" class="w3-hover-opacity">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m4">
+      <img src="assets/img/keaten.jpg" style="width:100%" (click)="expand('keaten')" class="w3-hover-opacity">
     </div>
 
-    <div class="w3-col m3 imgWrap">
-      <img src="assets/img/keaten.jpg" style="width:100%" (click)="expand('assets/img/keaten.jpg')" class="w3-hover-opacity">
-      <!-- <p class="name">Keaten</p> -->
+    <div class="w3-col m4">
+      <img src="assets/img/olivia.png" style="width:100%" (click)="expand('olivia')" class="w3-hover-opacity">
+    </div>
+
+    <div class="w3-col m4">
+      <img src="assets/img/Taylor.jpg" style="width:100%" (click)="expand('taylor')" class="w3-hover-opacity">
     </div>
   </div>
 </div>
@@ -86,11 +93,13 @@
 <!-- Modal for full size images on click-->
 <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
   <span class="w3-closebtn w3-hover-red w3-text-white w3-xxxlarge w3-container w3-display-topright">×</span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img src="" id="img01" style="height: 70vh">
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-16">
+    <img src="" id="img01" style="height: 60vh; transform: translateY(-15%);">
+    <p id="aboutMe"></p>
   </div>
 </div>
 
 <!--  <script src='https://maps.googleapis.com/maps/api/js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.4/SmoothScroll.min.js'></script> -->
 </body>
+</div>

@@ -43,25 +43,12 @@ body, html {
   font-size: 1.4em;
 }
 
-#googleMap {
-    width: 100%;
-    height: 400px;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-}
-
 /* Turn off parallax scrolling for tablets and mobiles */
 @media only screen and (max-width: 1024px) {
     .bgimg-1, .bgimg-2, .bgimg-3 {
         background-attachment: scroll;
     }
 }
-
-/* Heart Icon */
-.heart-icon {
-  color: #f77;
-}
-
 
 /* Clearfix Hack */
 .cf:before,
@@ -82,28 +69,11 @@ body, html {
     *zoom: 1;
 }
 
-/* Social Media Icons */
-.w3-half > a {
-  text-decoration: none;
-}
-
 i.fa {
   padding-top: .2em;
   padding-left: .5em;
   padding-right: .5em;
   taransition: color 1s;
-}
-
-.fa-fire:hover {
-  color: #4a4;
-}
-
-.fa-facebook:hover {
-  color: #04a;
-}
-
-.fa-codepen:hover {
-  color: #4af;
 }
 
 #profile { vertical-align: middle; }
