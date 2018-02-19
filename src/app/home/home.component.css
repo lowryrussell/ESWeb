@@ -16,24 +16,24 @@ body, html {
 
 /* First background image, full screen trees, "what" */
 .bgimg-1 {
-    background-image: url('../img/what-bg.jpg');
+    background-image: url('/assets/img/what-bg.jpg');
     min-height: 100vh;
 }
 
 /* Second background image, partial screen pollution, "why" */
 .bgimg-2 {
-    background-image: url('../img/why-bg.jpg');
+    background-image: url('/assets/img/why-bg.jpg');
     min-height: 70vh;
 }
 
 /* Third background image, partial screen group photo, "who" */
 .bgimg-3 {
-    background-image: url('../img/user-icon.png');
+    background-image: url('/assets/img/Taylor.jpg');
     min-height: 70vh;
 }
 
-.what-container{
-  src: url("../img/what-modal.jpg");
+.modal-img {
+  max-height: 20vh;
 }
 
 .w3-wide {letter-spacing: 10px;}
@@ -43,25 +43,12 @@ body, html {
   font-size: 1.4em;
 }
 
-#googleMap {
-    width: 100%;
-    height: 400px;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-}
-
 /* Turn off parallax scrolling for tablets and mobiles */
 @media only screen and (max-width: 1024px) {
     .bgimg-1, .bgimg-2, .bgimg-3 {
         background-attachment: scroll;
     }
 }
-
-/* Heart Icon */
-.heart-icon {
-  color: #f77;
-}
-
 
 /* Clearfix Hack */
 .cf:before,
@@ -82,28 +69,11 @@ body, html {
     *zoom: 1;
 }
 
-/* Social Media Icons */
-.w3-half > a {
-  text-decoration: none;
-}
-
 i.fa {
   padding-top: .2em;
   padding-left: .5em;
   padding-right: .5em;
   taransition: color 1s;
-}
-
-.fa-fire:hover {
-  color: #4a4;
-}
-
-.fa-facebook:hover {
-  color: #04a;
-}
-
-.fa-codepen:hover {
-  color: #4af;
 }
 
 #profile { vertical-align: middle; }

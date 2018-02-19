@@ -10,6 +10,8 @@ import { EditorModule } from './editor/editor.module';
 import { HomeModule } from './home/home.module';
 import { ProfileModule } from './profile/profile.module';
 import { SettingsModule } from './settings/settings.module';
+import { DataModule } from './data/data.module';
+import { MapModule } from './map/map.module';
 import {
   ApiService,
   ArticlesService,
@@ -42,7 +44,9 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     ProfileModule,
     rootRouting,
     SharedModule,
-    SettingsModule
+    SettingsModule,
+    DataModule,
+    MapModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},

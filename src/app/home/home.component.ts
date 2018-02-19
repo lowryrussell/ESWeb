@@ -54,105 +54,52 @@ export class HomeComponent implements OnInit {
     // Otherwise, set the list object
     this.listConfig = {type: type, filters: filters};
   }
-}
 
-// Smooth Scroll on anchor links
-(function() {
+  // Modal Image Gallery
+  expand(person) {
+    document.getElementById("modal01").style.display = "block";
 
-     'use strict';
-
-    // Feature Test
-    if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
-
-        // Function to animate the scroll
-        var smoothScroll = function (anchor, duration) {
-
-            // Calculate how far and how fast to scroll
-            var startLocation = window.pageYOffset;
-            var endLocation = anchor.offsetTop;
-            var distance = endLocation - startLocation;
-            var increments = distance/(duration/16);
-            var stopAnimation;
-
-            // Scroll the page by an increment, and check if it's time to stop
-            var animateScroll = function () {
-                window.scrollBy(0, increments);
-                stopAnimation();
-            };
-
-            // If scrolling down
-            if ( increments >= 0 ) {
-                // Stop animation when you reach the anchor OR the bottom of the page
-                stopAnimation = function () {
-                    var travelled = window.pageYOffset;
-                    if ( (travelled >= (endLocation - increments)) || ((window.innerHeight + travelled) >= document.body.offsetHeight) ) {
-                        clearInterval(runAnimation);
-                    }
-                };
-            }
-            // If scrolling up
-            else {
-                // Stop animation when you reach the anchor OR the top of the page
-                stopAnimation = function () {
-                    var travelled = window.pageYOffset;
-                    if ( travelled <= (endLocation || 0) ) {
-                        clearInterval(runAnimation);
-                    }
-                };
-            }
-
-            // Loop the animation function
-            var runAnimation = setInterval(animateScroll, 16);
-
-        };
-
-        // Define smooth scroll links
-        var scrollToggle = document.querySelectorAll('.scroll');
-
-        // For each smooth scroll link
-        [].forEach.call(scrollToggle, function (toggle) {
-
-            // When the smooth scroll link is clicked
-            toggle.addEventListener('click', function(e) {
-
-                // Prevent the default link behavior
-                e.preventDefault();
-
-                // Get anchor link and calculate distance from the top
-                var dataID = toggle.getAttribute('href');
-                var dataTarget = document.querySelector(dataID);
-                var dataSpeed = toggle.getAttribute('data-speed');
-
-                // If the anchor exists
-                if (dataTarget) {
-                    // Scroll to the anchor
-                    smoothScroll(dataTarget, dataSpeed || 500);
-                }
-
-            }, false);
-
-        });
-
+    if(person == "russell") {
+      document.getElementById("img01").src = "assets/img/russell.png";
+      document.getElementById("aboutMe").innerHTML = "Russell Lowry - Lowry is a senior Computer\
+        Science major in the Computer Science Department at the University of Arkansas. His current\
+        academic work includes Database Management and Mobile Programming. He will be primarily responsible\
+        for the frontend and assist with backend software.";
     }
-
- })();
-
-// Change style of navbar on scroll
-window.onscroll = function() {
-  myFunction()
-};
-
-function myFunction() {
-  var navbar = document.getElementById("myNavbar");
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    navbar.className = "w3-navbar" + " w3-card-2" + " w3-animate-top" + " w3-white";
-  } else {
-    navbar.className = navbar.className.replace(" w3-card-2 w3-animate-top w3-white", "");
+    else if(person == "kaylee") {
+      document.getElementById("img01").src = "assets/img/kaylee.jpg";
+      document.getElementById("aboutMe").innerHTML = "Kaylee Rauso– Rauso is a senior Computer Engineering major\
+        in the Computer Science and Computer Engineering Department at the University of Arkansas. She has\
+        completed Programming Paradigms, Circuits and Electronics, Database Management Systems, and Software\
+        Engineering. She interned at Cerner Corporation as a software intern developing and updating front-end\
+        implementations in Java for one of Cerner’s in-hospital solutions. She will be responsible for developing\
+        the web application.";
+    }
+    else if(person == "brok") {
+      document.getElementById("img01").src = "assets/img/brok.jpg";
+      document.getElementById("aboutMe").innerHTML = "Brok Stafford - Stafford is a senior Computer Science major\
+        in the Computer Science Department at the University of Arkansas. His current academic work includes Big\
+        Data Management and Analytics, Computer Networks, and an honors thesis on the topic of dynamic 3D\
+        network visualizations. He will be primarily responsible for the backend software including the Cassandra\
+        database, MQTT broker, and the server APIs.";
+    }
+    else if(person == "keaten") {
+      document.getElementById("img01").src = "assets/img/keaten.jpg";
+      document.getElementById("aboutMe").innerHTML = "Keaten Stokke - Stokke is a senior Computer Engineering\
+        major in the CSCE Department at the University of Arkansas. Relevant academic courses that have been\
+        completed are Embedded Systems, Software Engineering, and Digital Systems Testing. Project responsibilities\
+        include hardware setup, location planning, data retrieval, and website design.";
+    }
+    else if(person == "olivia") {
+      document.getElementById("img01").src = "assets/img/olivia.png";
+      document.getElementById("aboutMe").innerHTML = "Olivia Moses - Olivia is a Senior Computer Engineering\
+        major at the University of Arkansas. She has experience with many group projects and working within\
+        a group to complete a list of goals. She will be responsible for assisting with website design and\
+        hardware configuration/setup.";
+    }
+    else if(person == "taylor") {
+      document.getElementById("img01").src = "assets/img/Taylor.jpg";
+      document.getElementById("aboutMe").innerHTML = "Taylor Whitaker - Whitaker is a Ph.D. candidate for\
+      Computer Engineering at the University of Arkansas.";
+    }
   }
-}
-
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-}
