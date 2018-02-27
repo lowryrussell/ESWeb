@@ -1,5 +1,5 @@
 export interface Node {
-  nodeID: number;
+  nodeId: number;
   owner: number;
   nodeName: string;
   lat: number;
