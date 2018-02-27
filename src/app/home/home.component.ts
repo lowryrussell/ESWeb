@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit {
   }
 
   // Modal Image Gallery
+  /*
   expand(person) {
     document.getElementById("modal01").style.display = "block";
 
@@ -103,3 +104,5 @@ export class HomeComponent implements OnInit {
       Computer Engineering at the University of Arkansas.";
     }
   }
+*/
+}
