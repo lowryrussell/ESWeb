@@ -25,7 +25,8 @@ import {
   TagsService,
   UserService,
   HttpTokenInterceptor,
-  DataService
+  NodeService,
+  SensorService
 } from './shared';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
@@ -59,7 +60,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     ProfilesService,
     TagsService,
     UserService,
-    DataService
+    NodeService,
+    SensorService
   ],
   bootstrap: [AppComponent]
 })

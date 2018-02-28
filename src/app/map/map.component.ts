@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-declare var google: any;
+import { NodeService, SensorService } from '../shared';
 
 @Component({
   selector: 'app-map-page',
@@ -12,13 +12,16 @@ declare var google: any;
 export class MapComponent implements OnInit {
 
   constructor(
-    private router: Router
-
-  ) {
-
-  }
+    private router: Router,
+    private nodeService: NodeService,
+    private sensorService: SensorService
+  ) {}
 
   ngOnInit() {
+    console.log("Map init called");
+    this.nodeService.getNodeData();
+    //this.sensorService.getSensorData();
+    console.log("Data should be here");
     /*
     var mapOptions = {
       center: new google.maps.LatLng(40.589500, -8.683542),

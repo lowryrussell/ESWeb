@@ -27,7 +27,9 @@ export class HomeComponent implements OnInit {
     this.userService.isAuthenticated.subscribe(
       (authenticated) => {
         this.isAuthenticated = authenticated;
-
+      }
+    );
+/*
         // set the article list accordingly
         if (authenticated) {
           this.setListTo('feed');
@@ -42,8 +44,9 @@ export class HomeComponent implements OnInit {
       this.tags = tags;
       this.tagsLoaded = true;
     });
+    */
   }
-
+/*
   setListTo(type: string = '', filters: Object = {}) {
     // If feed is requested but user is not authenticated, redirect to login
     if (type === 'feed' && !this.isAuthenticated) {
@@ -54,9 +57,8 @@ export class HomeComponent implements OnInit {
     // Otherwise, set the list object
     this.listConfig = {type: type, filters: filters};
   }
-
+*/
   // Modal Image Gallery
-  /*
   expand(person) {
     document.getElementById("modal01").style.display = "block";
 
@@ -104,5 +106,4 @@ export class HomeComponent implements OnInit {
       Computer Engineering at the University of Arkansas.";
     }
   }
-*/
 }

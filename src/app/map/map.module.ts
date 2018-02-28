@@ -4,23 +4,22 @@ import { RouterModule } from '@angular/router';
 import { MapComponent } from './map.component';
 import { SharedModule } from '../shared';
 
+import { AgmCoreModule } from '@agm/core';
+
 const mapRouting: ModuleWithProviders = RouterModule.forChild([
   {
     path: 'map',
     component: MapComponent
-    /*
-    canActivate: [AuthGuard],
-    resolve: {
-      article: EditableArticleResolver
-    }
-    */
   }
 ]);
 
 @NgModule({
   imports: [
     mapRouting,
-    SharedModule
+    SharedModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBwykGuMMNTt5gxXZPxxbFjrwtSo8s_R60'
+    })
   ],
   declarations: [
     MapComponent

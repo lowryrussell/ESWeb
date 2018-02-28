@@ -27,11 +27,15 @@ export class ArticlesService {
       new HttpParams(params)
     );
   }
-
+/*
   get(slug): Observable<Article> {
     return this.apiService.get('/articles/' + slug)
       .pipe(map(data => data.article));
   }
+*/
+get(slug): Observable<Article> {
+  return null;
+}
 
   destroy(slug) {
     return this.apiService.delete('/articles/' + slug);

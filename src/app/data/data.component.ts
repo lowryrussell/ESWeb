@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { DataService } from '../shared';
+import { NodeService, SensorService } from '../shared';
 
 @Component({
   selector: 'app-data-page',
@@ -13,12 +13,14 @@ export class DataComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private dataService: DataService
+    private nodeService: NodeService,
+    private sensorService: SensorService
   ) {}
 
   ngOnInit() {
     console.log("Data init called");
-    console.log(this.dataService.getNodeData());
+    this.nodeService.getNodeData();
+    //this.sensorService.getSensorData();
     console.log("Data should be here");
   }
 }

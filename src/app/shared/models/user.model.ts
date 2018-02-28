@@ -1,7 +1,5 @@
 export interface User {
   email: string;
-  token: string;
+  permissionId: number;
   username: string;
-  bio: string;
-  image: string;
 }

@@ -6,4 +6,5 @@ export * from './jwt.service';
 export * from './profiles.service';
 export * from './tags.service';
 export * from './user.service';
-export * from './data.service';
+export * from './node.service';
+export * from './sensor.service';

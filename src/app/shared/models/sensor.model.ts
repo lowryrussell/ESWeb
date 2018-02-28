@@ -1,5 +1,5 @@
 export interface Sensor {
-  nodeID: number;
+  nodeId: number;
   timestamp: string;  // datetime
   sensor1: number;
   sensor2: number;
