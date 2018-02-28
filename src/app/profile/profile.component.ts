@@ -31,13 +31,6 @@ export class ProfileComponent implements OnInit {
         );
       }
     );
-
-
-
-  }
-
-  onToggleFollowing(following: boolean) {
-    this.profile.following = following;
   }
 
 }

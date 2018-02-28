@@ -10,12 +10,6 @@ const dataRouting: ModuleWithProviders = RouterModule.forChild([
   {
     path: 'data',
     component: DataComponent
-    /*
-    canActivate: [AuthGuard],
-    resolve: {
-      article: EditableArticleResolver
-    }
-    */
   }
 ]);
 
