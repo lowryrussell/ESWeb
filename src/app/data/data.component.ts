@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NodeService, SensorService } from '../shared';
 
 @Component({
-  selector: 'line-chart-demo',
+  selector: 'app-data-page',
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css']
 })
