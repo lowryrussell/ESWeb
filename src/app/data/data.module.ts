@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { DataComponent } from './data.component';
 import { SharedModule } from '../shared';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
 
 const dataRouting: ModuleWithProviders = RouterModule.forChild([
   {
@@ -20,7 +22,8 @@ const dataRouting: ModuleWithProviders = RouterModule.forChild([
 @NgModule({
   imports: [
     dataRouting,
-    SharedModule
+    SharedModule,
+    ChartsModule
   ],
   declarations: [
     DataComponent
