@@ -23,7 +23,7 @@ export class UserService {
     private http: HttpClient,
     private jwtService: JwtService
   ) {}
-/*
+
   // Verify JWT in localstorage with server & load user's info.
   // This runs once on application startup.
   populate() {
@@ -39,11 +39,6 @@ export class UserService {
       this.purgeAuth();
     }
   }
-*/
-populate() {
-  // If JWT detected, attempt to get & store user's info
-  this.purgeAuth();
-}
 
   setAuth(user: User) {
     // Save JWT sent from server in localstorage

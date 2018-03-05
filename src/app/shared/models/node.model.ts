@@ -1,11 +1,11 @@
 export interface Node {
-  nodeId: number;
-  owner: number;
+  nodeId: string;
+  owner: string;
   nodeName: string;
   latitude: number;
   longitude: number;
   city: string;
   state: string;
   country: string;
-  status: number;
+  status: string;
 }

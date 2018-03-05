@@ -9,15 +9,17 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class SensorService {
-  private sensor: Sensor;
-  
+  sensor: Sensor[];
+
   constructor (
     private apiService: ApiService,
     private http: HttpClient
   ) {}
-/*
-  getSensorData(): Observable<[any]> {
-    return this.apiService.get('/sensordata', Sensor).subscribe(data => console.log(data));
+
+  getSensorData() {
+    this.apiService.get('/sensordata')
+    .subscribe(data => this.sensor = data);
+
+    return this.sensor;
   }
-*/
 }
