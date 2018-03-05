@@ -1,7 +1,8 @@
 .map-page {
   background-color: lightgrey;
 }
-
-agm-map {
-      height: 70vh;
+#map{
+    height: 70vh;
+    overflow: hidden;
+    position: relative;
 }
