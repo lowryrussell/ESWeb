@@ -1,6 +1,11 @@
 .map-page {
   background-color: lightgrey;
 }
+
+.container {
+  padding-top: 32px;
+}
+
 #map{
     height: 70vh;
     overflow: hidden;
