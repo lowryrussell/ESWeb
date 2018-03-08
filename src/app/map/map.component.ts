@@ -6,6 +6,8 @@ import { Node, NodeService, SensorService } from '../shared';
 
 import { } from '@types/googlemaps';
 
+import * as MarkerClusterer from 'node-js-marker-clusterer';
+
 @Component({
   selector: 'app-map-page',
   templateUrl: './map.component.html',
@@ -17,12 +19,11 @@ export class MapComponent implements OnInit {
   constructor(
     private router: Router,
     private nodeService: NodeService,
-    private sensorService: SensorService
+    private sensorService: SensorService,
   ) {}
 
   ngOnInit() {
     this.node = this.nodeService.getNodeData();
-    console.log(this.node);
 
     this.loadLocationMap();
   }
@@ -45,20 +46,20 @@ export class MapComponent implements OnInit {
       var marker = new google.maps.Marker({
       position: new google.maps.LatLng(this.node[i].latitude,this.node[i].longitude),
       map: map,
-      content: this.node[i]
+      //content: this.node[i]
       });
 
       markers.push(marker);
 
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      google.maps.event.addListener(marker, 'click', (function(node, marker, i) {
         var content =
             "<div class='info-card'>" +
             "<div class='info-card-heading'>" +
-            marker.content.nodeName +
+            node[i].nodeName +
             "</div>" +
             "<div class='info-card-subheading'>" +
-            marker.content.city + ', ' + marker.content.state +
-            ', ' + marker.content.country +
+            node[i].city + ', ' + node[i].state +
+            ', ' + node[i].country +
             "</div>" +
             "<div class='info-card-bottom'>" +
             "<p>Some sensor stuff here</p>" +
@@ -69,7 +70,7 @@ export class MapComponent implements OnInit {
           infowindow.setContent(content);
           infowindow.open(map, marker);
         }
-      })(marker, i));
+      })(this.node, marker, i));
     }
 
     var markerCluster = new MarkerClusterer(map, markers, {imagePath: "assets/img/m"});
