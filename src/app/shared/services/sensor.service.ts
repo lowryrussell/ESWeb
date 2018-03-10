@@ -22,4 +22,11 @@ export class SensorService {
 
     return this.sensor;
   }
+
+  getSensorDataByNode(nodeId: string){
+    this.apiService.get('/node/' + nodeId)
+    .subscribe(data => this.sensor = data);
+
+    return this.sensor;
+  }
 }

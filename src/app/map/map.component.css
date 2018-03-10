@@ -1,13 +1,10 @@
-.map-page {
-  background-color: lightgrey;
-}
 
 .container {
   padding-top: 32px;
 }
 
 #map{
-    height: 70vh;
+    height: 75vh;
     overflow: hidden;
     position: relative;
 }
@@ -28,7 +25,7 @@ body, html {
 }
 
 .bgimg-2 {
-    background-image: url('/assets/img/data-bg.jpg');
+    background-image: url('/assets/img/map-bg.jpg');
     min-height: 70vh;
 }
 
@@ -36,6 +33,7 @@ body, html {
   letter-spacing: 10px;
 }
 .w3-hover-opacity {cursor: pointer;}
+
 
 /* Turn off parallax scrolling for tablets and mobiles */
 @media only screen and (max-width: 1024px) {

@@ -23,7 +23,7 @@ export class DataComponent implements OnInit {
     this.node = this.nodeService.getNodeData();
     this.sensor = this.sensorService.getSensorData();
     console.log(this.node);
-    console.log(this.sensor[0]);
+    console.log(this.sensor);
     /*  Access individual node information with "this.node[array position].attribute"
         Full list of attributes can be found in /shared/models/node.model
 
