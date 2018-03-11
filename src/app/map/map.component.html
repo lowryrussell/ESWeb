@@ -1,7 +1,21 @@
 <div class="map-page">
-  <div class="container page w3-padding-32">
-    <h1>Map</h1>
+
+<div class="bgimg-2 w3-display-container">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-light-grey w3-wide">Map</span>
   </div>
-  <div id="map">
+</div>
+
+<div class="w3-container w3-padding-32">
+  <div class="w3-center">
+    <button type="button" class="w3-button w3-large w3-blue w3-hover-white"
+            (click)="loadLocationMap()"> Node Location Map </button>
+    <button type="button" class="w3-button w3-large w3-green w3-hover-white"
+            (click)="loadHeatMap()"> Concentration Map </button>
   </div>
+</div>
+
+<div id="map">
+</div>
+
 </div>

@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   // Modal Image Gallery
-  /*expand(person) {
+  expand(person) {
     document.getElementById("modal01").style.display = "block";
 
     if(person == "russell") {
@@ -71,5 +71,5 @@ export class HomeComponent implements OnInit {
       document.getElementById("aboutMe").innerHTML = "Taylor Whitaker - Whitaker is a Ph.D. candidate for\
       Computer Engineering at the University of Arkansas.";
     }
-  }*/
+  }
 }
