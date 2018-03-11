@@ -16,6 +16,7 @@ export class NodeService {
     private http: HttpClient
   ) {}
 
+  // Retrieve all node entries in Node table
   getNodeData() {
     this.apiService.get('/node')
     .subscribe(data => this.node = data);
