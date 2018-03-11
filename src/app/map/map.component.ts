@@ -88,7 +88,7 @@ export class MapComponent implements OnInit {
     for (var i = 0; i < this.node.length; i++) {
       var latLng = new google.maps.LatLng(this.node[i].latitude,this.node[i].longitude);
       this.sensor = this.sensorService.getSensorDataByNode(this.node[i].nodeId);
-      console.log(this.sensor;)
+      console.log(this.sensor);
       /*
       var magnitude = ;
       var weightedLoc = {
@@ -105,4 +105,5 @@ export class MapComponent implements OnInit {
     });
 */
   }
+}
 }
