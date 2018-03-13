@@ -19,8 +19,8 @@ export class NodeService {
   // Retrieve all node entries in Node table
   getNodeData() {
     return new Promise((resolve, reject) => {
-      this.apiService.get('/node').subscribe(data =>  {
-        this.node = data
+      this.apiService.get('/node').subscribe((data: Node[]) =>  {
+        this.node = data as Node[]
         resolve(this.node);
       });
     });
