@@ -18,9 +18,11 @@ export class NodeService {
 
   // Retrieve all node entries in Node table
   getNodeData() {
-    this.apiService.get('/node')
-    .subscribe(data => this.node = data);
-
-    return this.node;
+    return new Promise((resolve, reject) => {
+      this.apiService.get('/node').subscribe(data =>  {
+        this.node = data
+        resolve(this.node);
+      });
+    });
   }
 }

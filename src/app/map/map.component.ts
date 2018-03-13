@@ -24,10 +24,11 @@ export class MapComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.node = this.nodeService.getNodeData();
+    this.nodeService.getNodeData().then(data => {
+      this.node = data;
+      this.loadLocationMap();
+    });
     //this.sensor = this.sensorService.getSensorData();
-
-    this.loadLocationMap();
   }
 
   loadLocationMap(){
@@ -44,42 +45,45 @@ export class MapComponent implements OnInit {
 
     var markers = [];
 
-    for (var i = 0; i < this.node.length; i++) {
+    var index = 0;
+    this.node.forEach(element => {
       var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(this.node[i].latitude,this.node[i].longitude),
+      position: new google.maps.LatLng(element.latitude,element.longitude),
       icon: "assets/img/map-marker.png",
       map: map,
       });
 
       markers.push(marker);
 
-      this.sensor = this.sensorService.getSensorDataByNode(this.node[i].nodeId);
-
-      google.maps.event.addListener(marker, 'click', (function(node, sensor, marker, i) {
-        var content =
-            "<div class='info-card'>" +
-            "<div class='info-card-heading'>" +
-            node[i].nodeName +
-            "</div>" +
-            "<div class='info-card-subheading'>" +
-            node[i].city + ', ' + node[i].state +
-            ', ' + node[i].country +
-            "</div>" +
-            "<div class='info-card-bottom'>" +
-            "<p>" +
-            "Sensor1: " + sensor[0].sensorReading1 + "<br>" +
-            "Sensor2: " + sensor[0].sensorReading2 + "<br>" +
-            "Sensor3: " + sensor[0].sensorReading3 + "<br>" +
-            "</p>" +
-            "</div>" +
-            "</div>";
-        return function() {
-          infowindow.setContent(content);
-          infowindow.open(map, marker);
-        }
-      })(this.node, this.sensor, marker, i));
-
-    }
+      this.sensorService.getSensorDataByNode(element.nodeId).then(data => {
+        this.sensor = data
+      }).then(() => {
+        google.maps.event.addListener(marker, 'click', (function(node, sensor, marker) {
+          var content =
+              "<div class='info-card'>" +
+              "<div class='info-card-heading'>" +
+              element.nodeName +
+              "</div>" +
+              "<div class='info-card-subheading'>" +
+              element.city + ', ' + element.state +
+              ', ' + element.country +
+              "</div>" +
+              "<div class='info-card-bottom'>" +
+              "<p>" +
+              "Sensor1: " + sensor[0].sensorReading1 + "<br>" +
+              "Sensor2: " + sensor[0].sensorReading2 + "<br>" +
+              "Sensor3: " + sensor[0].sensorReading3 + "<br>" +
+              "</p>" +
+              "</div>" +
+              "</div>";
+          return function() {
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+          }
+        })(this.node, this.sensor, marker));
+      });
+      index+=1;
+    })
 
     var markerCluster = new MarkerClusterer(map, markers, {imagePath: "assets/img/m"});
   }
