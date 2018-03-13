@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { JwtService } from './jwt.service';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError } from 'rxjs/operators/catchError';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class ApiService {
@@ -20,7 +20,7 @@ export class ApiService {
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
     return this.http.get(`${environment.api_url}${path}`, { params })
-      .pipe(catchError(this.formatErrors));
+      .pipe(retry(3), catchError(this.formatErrors));
   }
 
   put(path: string, body: Object = {}): Observable<any> {

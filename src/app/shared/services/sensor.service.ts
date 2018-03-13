@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class SensorService {
   sensor: Sensor[];
+  sensorNode: Sensor[] = [];
 
   constructor (
     private apiService: ApiService,
@@ -25,10 +26,10 @@ export class SensorService {
   }
 
   // Retrieve sensor entries in the sensor data table from the given node
-  getSensorDataByNode(nodeId: string){
+  getSensorDataByNode(nodeId: string) {
     this.apiService.get('/sensordata/' + nodeId)
-    .subscribe(data => this.sensor = data);
+    .subscribe(data => this.sensorNode = data);
 
-    return this.sensor;
+    return this.sensorNode;
   }
 }
