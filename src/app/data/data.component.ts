@@ -22,25 +22,57 @@ export class DataComponent implements OnInit {
   ngOnInit() {
     this.node = this.nodeService.getNodeData();
     this.sensor = this.sensorService.getSensorData();
-    console.log(this.node);
-    console.log(this.sensor);
-    /*  Access individual node information with "this.node[array position].attribute"
-        Full list of attributes can be found in /shared/models/node.model
 
-        Accessing sensor Data
-          If you want the nodeId for the sensor or the timestamp, use:
-            "this.sensor[array position].pk.attribute"
-          If you want a sensor reading, use
-            "this.sensor[array position].sensorReading#"
-    */
+    //console.log(this.node);
+    //console.log(this.sensor);
+
+    var sensorReadings1Arr = [];
+    var sensorReadings2Arr = [];
+    var sensorReadings3Arr = [];
+    var sensorReadingTimestamps = [];
+
+    (this.sensor).forEach(function(child) {
+      //console.log((child.nodeId).toString())
+      if((child.nodeId).toString() == "8c207df6-2291-451e-baff-d6b053e8c9e4") {
+        console.log(child)
+        var date = new Date(child.timestamp);
+
+        // Month part from the timestamp
+        var month = date.getMonth()+1;
+        // Day part from the timestamp
+        var day = date.getDate();
+        // Hours part from the timestamp
+        var hours = date.getHours();
+        // Minutes part from the timestamp
+        var minutes = "0" + date.getMinutes();
+        // Seconds part from the timestamp
+        var seconds = "0" + date.getSeconds();
+
+        // Will display time in MM-dd HH:mm:ss format
+        var formattedTime = month + '-' + day + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+        sensorReadingTimestamps.push(formattedTime)
+        sensorReadings1Arr.push(child.sensorReading1)
+        sensorReadings2Arr.push(child.sensorReading2)
+        sensorReadings3Arr.push(child.sensorReading3)
+      }
+    })
+
+    this.lineChartData = [
+      {data: sensorReadings1Arr, label: 'Gas 1'},
+      {data: sensorReadings2Arr, label: 'Gas 2'},
+      {data: sensorReadings3Arr, label: 'Gas 3'}
+    ];
+
+    this.lineChartLabels = sensorReadingTimestamps
   }
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
+    {data: [], label: 'Series A'},
+    {data: [], label: 'Series B'},
+    {data: [], label: 'Series C'}
   ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels:Array<any> = [];
   public lineChartOptions:any = {
     responsive: true
   };
