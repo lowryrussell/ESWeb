@@ -20,7 +20,6 @@ export class DataComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.node = this.nodeService.getNodeData();
     this.sensor = this.sensorService.getSensorData();
 
     //console.log(this.node);
