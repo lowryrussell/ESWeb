@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     }
     else if(person == "kaylee") {
       (<HTMLImageElement>document.getElementById("img01")).src = "assets/img/kaylee.jpg";
-      document.getElementById("aboutMe").innerHTML = "Kaylee Rauso– Rauso is a senior Computer Engineering major\
+      document.getElementById("aboutMe").innerHTML = "Kaylee Rauso – Rauso is a senior Computer Engineering major\
         in the Computer Science and Computer Engineering Department at the University of Arkansas. She has\
         completed Programming Paradigms, Circuits and Electronics, Database Management Systems, and Software\
         Engineering. She interned at Cerner Corporation as a software intern developing and updating front-end\

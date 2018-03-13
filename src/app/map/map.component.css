@@ -5,8 +5,11 @@
 
 #map{
     height: 75vh;
+    width: 80vw;
     overflow: hidden;
     position: relative;
+    margin: auto;
+    margin-bottom: 2vh;
 }
 
 body {font-family: "Lato", sans-serif;}
@@ -40,4 +43,12 @@ body, html {
     .bgimg-1, .bgimg-2, .bgimg-3 {
         background-attachment: scroll;
     }
+}
+
+#heatmap-modal {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+  text-align: center;
 }

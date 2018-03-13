@@ -2,7 +2,7 @@
 
 <div class="bgimg-2 w3-display-container">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-light-grey w3-wide">Map</span>
+    <span class="w3-center w3-padding-xlarge w3-black w3-xxlarge w3-wide w3-animate-opacity">Map</span>
   </div>
 </div>
 
@@ -11,9 +11,24 @@
     <button type="button" class="w3-button w3-large w3-blue w3-hover-white"
             (click)="loadLocationMap()"> Node Location Map </button>
     <button type="button" class="w3-button w3-large w3-green w3-hover-white"
-            (click)="loadHeatMap()"> Concentration Map </button>
+            onclick="document.getElementById('heatmap-modal').style.display='block'"> Concentration Map </button>
   </div>
 </div>
+
+<div id="heatmap-modal" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-white">
+      <div class="w3-container w3-padding">
+        <span onclick="document.getElementById('heatmap-modal').style.display='none'" class="w3-button w3-display-topright">x</span>
+          <h1>Which sensor would you like to filter for?</h1>
+          <button type="button" class="w3-button w3-bar w3-blue w3-hover-white"
+                  (click)="loadHeatMap(sensorReading1)"> Sensor1 </button>
+          <button type="button" class="w3-button w3-bar w3-indigo w3-hover-white"
+                  (click)="loadHeatMap(sensorReading2)"> Sensor2 </button>
+          <button type="button" class="w3-button w3-bar w3-teal w3-hover-white"
+                  (click)="loadHeatMap(sensorReading3)"> Sensor3 </button>
+      </div>
+    </div>
+  </div>
 
 <div id="map">
 </div>
