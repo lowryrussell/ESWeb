@@ -24,7 +24,7 @@ export class MapComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.nodeService.getNodeData().then(data => {
+    this.nodeService.getNodeData().then((data: Node[]) => {
       this.node = data;
       this.loadLocationMap();
     });
@@ -55,7 +55,7 @@ export class MapComponent implements OnInit {
 
       markers.push(marker);
 
-      this.sensorService.getSensorDataByNode(element.nodeId).then(data => {
+      this.sensorService.getSensorDataByNode(element.nodeId).then((data: Sensor[]) => {
         this.sensor = data
       }).then(() => {
         google.maps.event.addListener(marker, 'click', (function(node, sensor, marker) {
