@@ -11,6 +11,10 @@ navigate to "http://localhost:4200/"
 # Building the project
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+# Local to VM development
+To launch on VM and make accessible
+  ng serve --host 0.0.0.0
+  navigate to 10.9.1.100:4200
 
 # Functional specifications
 
