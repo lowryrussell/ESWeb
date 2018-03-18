@@ -96,25 +96,34 @@ export class MapComponent implements OnInit {
         });
 
     var heatmapData = [];
-    for (var i = 0; i < this.node.length; i++) {
-      var latLng = new google.maps.LatLng(this.node[i].latitude,this.node[i].longitude);
-      //this.sensor = this.sensorService.getSensorDataByNode(this.node[i].nodeId);
-      //console.log(this.sensor);
-      /*
-      var magnitude = ;
-      var weightedLoc = {
-        location: latLng,
-        weight: Math.pow(2, magnitude)
-      };
-      heatmapData.push(weightedLoc);
+    this.node.forEach(element => {
+      var latLng = new google.maps.LatLng(element.latitude,element.longitude);
+      this.sensorService.getSensorDataByNode(element.nodeId).then((data: Sensor[]) => {
+        this.sensor = data
+      }).then(() => {
+        var magnitude;
+        if (sensorType == "sensorReading1") {
+          magnitude = this.sensor[0].sensorReading1;
+        }
+        else if (sensorType == "sensorReading2") {
+          magnitude = this.sensor[0].sensorReading2;
+        }
+        else {
+          magnitude = this.sensor[0].sensorReading3;
+        }
+        var weightedLoc = {
+          location: latLng,
+          weight: Math.pow(2, magnitude)
+        };
+        heatmapData.push(weightedLoc);
+      });
+    })
 
-    }
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatmapData,
       dissipating: false,
       map: map
     });
-*/
+
   }
-}
 }
