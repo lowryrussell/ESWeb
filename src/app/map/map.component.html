@@ -21,11 +21,11 @@
         <span onclick="document.getElementById('heatmap-modal').style.display='none'" class="w3-button w3-display-topright">x</span>
           <h1>Which sensor would you like to filter for?</h1>
           <button type="button" class="w3-button w3-bar w3-blue w3-hover-white"
-                  (click)="loadHeatMap(sensorReading1)"> Sensor1 </button>
+                  (click)="loadHeatMap('sensorReading1')"> Sensor1 </button>
           <button type="button" class="w3-button w3-bar w3-indigo w3-hover-white"
-                  (click)="loadHeatMap(sensorReading2)"> Sensor2 </button>
+                  (click)="loadHeatMap('sensorReading2')"> Sensor2 </button>
           <button type="button" class="w3-button w3-bar w3-teal w3-hover-white"
-                  (click)="loadHeatMap(sensorReading3)"> Sensor3 </button>
+                  (click)="loadHeatMap('sensorReading3')"> Sensor3 </button>
       </div>
     </div>
   </div>
