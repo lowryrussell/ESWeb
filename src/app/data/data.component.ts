@@ -51,9 +51,9 @@ export class DataComponent implements OnInit {
         var formattedTime = month + '-' + day + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 
         sensorReadingTimestamps.push(formattedTime)
-        sensorReadings1Arr.push(child.sensorReading1)
-        sensorReadings2Arr.push(child.sensorReading2)
-        sensorReadings3Arr.push(child.sensorReading3)
+        sensorReadings1Arr.push(child.altitude)
+        sensorReadings2Arr.push(child.humidity)
+        sensorReadings3Arr.push(child.pressure)
       }
     })
 
