@@ -22,13 +22,12 @@ export class DataComponent implements OnInit {
   ngOnInit() {
     this.sensor = this.sensorService.getSensorData();
 
-    //console.log(this.node);
-    //console.log(this.sensor);
 
-    var sensorReadings1Arr = [];
-    var sensorReadings2Arr = [];
-    var sensorReadings3Arr = [];
-    var sensorReadingTimestamps = [];
+    var altitudeArr = [];
+    var humidityArr = [];
+    var temperatureArr = [];
+    var pressureArr = [];
+    var timestampArr = [];
 
     (this.sensor).forEach(function(child) {
       //console.log((child.nodeId).toString())
@@ -50,26 +49,29 @@ export class DataComponent implements OnInit {
         // Will display time in MM-dd HH:mm:ss format
         var formattedTime = month + '-' + day + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 
-        sensorReadingTimestamps.push(formattedTime)
-        sensorReadings1Arr.push(child.altitude)
-        sensorReadings2Arr.push(child.humidity)
-        sensorReadings3Arr.push(child.pressure)
+        timestampArr.push(formattedTime)
+        altitudeArr.push(child.altitude)
+        humidityArr.push(child.humidity)
+        pressureArr.push(child.pressure)
+        temperatureArr.push(child.temp)
       }
     })
 
     this.lineChartData = [
-      {data: sensorReadings1Arr, label: 'Gas 1'},
-      {data: sensorReadings2Arr, label: 'Gas 2'},
-      {data: sensorReadings3Arr, label: 'Gas 3'}
+      {data: altitudeArr, label: 'Altitude'},
+      {data: humidityArr, label: 'Humidity'},
+      {data: pressureArr, label: 'Pressure'}
+      {data: temperatureArr, label: 'Temperature'}
     ];
 
     this.lineChartLabels = sensorReadingTimestamps
   }
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [], label: 'Series A'},
-    {data: [], label: 'Series B'},
-    {data: [], label: 'Series C'}
+    {data: [], label: 'Altitude'},
+    {data: [], label: 'Humidity'},
+    {data: [], label: 'Pressure'}
+    {data: [], label: 'Temperature'}
   ];
   public lineChartLabels:Array<any> = [];
   public lineChartOptions:any = {
@@ -99,7 +101,15 @@ export class DataComponent implements OnInit {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    }
+    },
+    { // dark grey
+      backgroundColor: 'rgba(77,83,96,0.2)',
+      borderColor: 'rgba(77,83,96,1)',
+      pointBackgroundColor: 'rgba(77,83,96,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    },
   ];
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';

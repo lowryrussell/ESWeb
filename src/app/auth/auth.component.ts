@@ -25,7 +25,8 @@ export class AuthComponent implements OnInit {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
       'email': ['', Validators.required],
-      'password': ['', Validators.required]
+      'password': ['', Validators.required],
+      'permissionId': ["1", Validators.required]
     });
   }
 
@@ -47,6 +48,7 @@ export class AuthComponent implements OnInit {
     this.errors = {errors: {}};
 
     const credentials = this.authForm.value;
+    console.log(credentials)
     this.userService
     .attemptAuth(this.authType, credentials)
     .subscribe(

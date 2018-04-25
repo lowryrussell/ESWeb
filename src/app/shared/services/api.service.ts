@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams, RequestOptions } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { JwtService } from './jwt.service';
@@ -31,9 +31,11 @@ export class ApiService {
   }
 
   post(path: string, body: Object = {}): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(
       `${environment.api_url}${path}`,
-      JSON.stringify(body)
+      body,
+      {headers: headers}
     ).pipe(catchError(this.formatErrors));
   }
 
