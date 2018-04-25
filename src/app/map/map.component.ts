@@ -32,20 +32,58 @@ export class MapComponent implements OnInit {
   }
 
   loadLocationMap(){
-    var mapOptions = {
+
+    var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 2,
         center: new google.maps.LatLng(0,0),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        streetViewControl: false
-      }
-
-    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        streetViewControl: false,
+        styles:
+        [{
+            "featureType": "landscape.man_made",
+            "stylers": [{
+                "color": "#eaeaea"
+              }]
+          },{
+            "featureType": "landscape.natural",
+            "stylers": [{
+                "color": "#dfedd3"
+              }]
+          },{
+            "featureType": "road.arterial",
+            "elementType": "labels",
+            "stylers": [{
+                "visibility": "off"
+              }]
+          },{
+            "featureType": "road.highway",
+            "elementType": "labels",
+            "stylers": [{
+                "visibility": "off"
+              }]
+          },{
+            "featureType": "road.local",
+            "stylers": [{
+                "visibility": "off"
+              }]
+          },{
+            "featureType": "transit",
+            "stylers": [{
+                "visibility": "simplified"
+              }]
+          },{
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#caf0fe"
+              }]
+          }]
+      });
 
     var infowindow = new google.maps.InfoWindow({});
 
     var markers = [];
 
-    var index = 0;
     this.node.forEach(element => {
       var marker = new google.maps.Marker({
       position: new google.maps.LatLng(element.latitude,element.longitude),
@@ -59,6 +97,20 @@ export class MapComponent implements OnInit {
         this.sensor = data
       }).then(() => {
         google.maps.event.addListener(marker, 'click', (function(node, sensor, marker) {
+          var cardBottom;
+
+          if (typeof sensor[0] == 'undefined') {
+            cardBottom =
+              "This node does not have any associated sensor readings!";
+          }
+          else {
+            cardBottom =
+              "Altitude: " + sensor[0].altitude + " m (meters)<br>" +
+              "Humidity: " + sensor[0].humidity + " RH (relative humidity)<br>" +
+              "Pressure: " + sensor[0].pressure + " hPa (hectoPascal)<br>" +
+              "Temperature: " + sensor[0].temp + " &#8457 (Fahrenheit)<br>";
+          }
+
           var content =
               "<div class='info-card'>" +
               "<div class='info-card-heading'>" +
@@ -70,9 +122,7 @@ export class MapComponent implements OnInit {
               "</div>" +
               "<div class='info-card-bottom'>" +
               "<p>" +
-              "Sensor1: " + sensor[0].sensorReading1 + "<br>" +
-              "Sensor2: " + sensor[0].sensorReading2 + "<br>" +
-              "Sensor3: " + sensor[0].sensorReading3 + "<br>" +
+              cardBottom
               "</p>" +
               "</div>" +
               "</div>";
@@ -82,17 +132,56 @@ export class MapComponent implements OnInit {
           }
         })(this.node, this.sensor, marker));
       });
-      index+=1;
     })
 
     var markerCluster = new MarkerClusterer(map, markers, {imagePath: "assets/img/m"});
   }
 
+
   loadHeatMap(sensorType: string){
     var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 2,
           center: new google.maps.LatLng(50,50),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          styles:
+          [{
+              "featureType": "landscape.man_made",
+              "stylers": [{
+                  "color": "#eaeaea"
+                }]
+            },{
+              "featureType": "landscape.natural",
+              "stylers": [{
+                  "color": "#dfedd3"
+                }]
+            },{
+              "featureType": "road.arterial",
+              "elementType": "labels",
+              "stylers": [{
+                  "visibility": "off"
+                }]
+            },{
+              "featureType": "road.highway",
+              "elementType": "labels",
+              "stylers": [{
+                  "visibility": "off"
+                }]
+            },{
+              "featureType": "road.local",
+              "stylers": [{
+                  "visibility": "off"
+                }]
+            },{
+              "featureType": "transit",
+              "stylers": [{
+                  "visibility": "simplified"
+                }]
+            },{
+              "featureType": "water",
+              "elementType": "geometry",
+              "stylers": [{
+                  "color": "#caf0fe"
+                }]
+            }]
         });
 
     var heatmapData = [];
@@ -101,29 +190,36 @@ export class MapComponent implements OnInit {
       this.sensorService.getSensorDataByNode(element.nodeId).then((data: Sensor[]) => {
         this.sensor = data
       }).then(() => {
-        var magnitude;
-        if (sensorType == "sensorReading1") {
-          magnitude = this.sensor[0].sensorReading1;
+        if (typeof this.sensor[0] !== 'undefined') {
+          var magnitude;
+          if (sensorType == "altitude") {
+            magnitude = this.sensor[0].altitude;
+          }
+          else if (sensorType == "humidity") {
+            magnitude = this.sensor[0].humidity;
+          }
+          else if (sensorType == "pressure") {
+            magnitude = this.sensor[0].pressure;
+          }
+          else {
+            magnitude = this.sensor[0].temp;
+          }
+          console.log("magnitude is " + magnitude);
+          var weightedLoc = {
+            location: latLng,
+            weight: Math.pow(1.5, magnitude)
+          };
+          heatmapData.push(weightedLoc);
+
+          var heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatmapData,
+            dissipating: true,
+            radius: 30,
+            map: map
+          });
         }
-        else if (sensorType == "sensorReading2") {
-          magnitude = this.sensor[0].sensorReading2;
-        }
-        else {
-          magnitude = this.sensor[0].sensorReading3;
-        }
-        var weightedLoc = {
-          location: latLng,
-          weight: Math.pow(2, magnitude)
-        };
-        heatmapData.push(weightedLoc);
       });
     })
-
-    var heatmap = new google.maps.visualization.HeatmapLayer({
-      data: heatmapData,
-      dissipating: false,
-      map: map
-    });
 
   }
 }
