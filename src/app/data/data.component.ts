@@ -60,17 +60,17 @@ export class DataComponent implements OnInit {
     this.lineChartData = [
       {data: altitudeArr, label: 'Altitude'},
       {data: humidityArr, label: 'Humidity'},
-      {data: pressureArr, label: 'Pressure'}
+      {data: pressureArr, label: 'Pressure'},
       {data: temperatureArr, label: 'Temperature'}
     ];
 
-    this.lineChartLabels = sensorReadingTimestamps
+    this.lineChartLabels = timestampArr
   }
   // lineChart
   public lineChartData:Array<any> = [
     {data: [], label: 'Altitude'},
     {data: [], label: 'Humidity'},
-    {data: [], label: 'Pressure'}
+    {data: [], label: 'Pressure'},
     {data: [], label: 'Temperature'}
   ];
   public lineChartLabels:Array<any> = [];
