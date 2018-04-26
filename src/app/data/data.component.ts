@@ -30,7 +30,8 @@ export class DataComponent implements OnInit {
     var timestampArr = [];
 
     (this.sensor).forEach(function(child) {
-      //console.log((child.nodeId).toString())
+
+      //CHANGE THIS EVENTUALLY, THIS IS ONLY LOOKING AT DATA FOR 1 NODE
       if((child.nodeId).toString() == "8c207df6-2291-451e-baff-d6b053e8c9e4") {
         console.log(child)
         var date = new Date(child.timestamp);
